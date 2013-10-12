@@ -1,12 +1,12 @@
 <div ng-controller="OrdersController">
   <div class="main-wrapper">
     <div class="main-left">
+      <div class="header palette-green-sea">
+        Order Items
+      </div>
       <ul class="order-items">
-        <li class="header palette-green-sea">
-          Order Items
-        </li>
         <li ng-repeat="(id, info) in lineItems.order_items">
-          <span class="item-name">{{info.name}}</span>
+          <span class="item-name">{{info.title}}</span>
           <div class="item-info">
             <i>{{info.quantity}}</i> x
             <span class="item-price">
@@ -36,7 +36,7 @@
     <div class="main-right">
       <div class="menu-item palette-midnight-blue" ng-repeat="item in items" ng-click="addItem(item)">
         <div>
-          <p>{{item.name}}</p>
+          <p>{{item.title}}</p>
         </div>
       </div>
     </div>

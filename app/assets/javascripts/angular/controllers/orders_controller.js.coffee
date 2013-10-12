@@ -1,12 +1,20 @@
-App.controller("OrdersController", ['$scope', '$location', '$filter', ($scope, $location, $filter) ->
+App.controller("OrdersController", ['$scope', '$location', '$filter', 'itemsFactory', ($scope, $location, $filter, itemsFactory) ->
   $scope.items = [{id: 1, name: "Burger", price: 10.00},{id: 2, name: "Soft Drink", price: 2.50},{id: 3, name: "Fries", price: 3.50}]
   $scope.tax_rate = 0.10
   $scope.orderItems = []
   $scope.order = {}
+  $scope.items = itemsFactory.items()
 
   $scope.$watch 'orderItems', (n, o) ->
     recalculateOrder()
   , true
+
+  init = () ->
+    console.log "test"
+    $scope.getItems()
+
+  $scope.getItems = ->
+    itemsFactory.getItems()
 
   $scope.addItem = (item) ->
     $scope.orderItems.push(item)
@@ -44,4 +52,5 @@ App.controller("OrdersController", ['$scope', '$location', '$filter', ($scope, $
   _getQuantity = (id) ->
     _.where($scope.orderItems, {id: id}).length
 
+  init()
 ])

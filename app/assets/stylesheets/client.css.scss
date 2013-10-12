@@ -4,23 +4,35 @@
 
 /* New Order */
 
-body {
+html, body {
+  height: 100%;
+  width: 100%;
   margin:0
 }
 
 .main-wrapper {
-  position: relative;
+  position: absolute;
+  top: 75px;
+  bottom: 0px;
+  width: 100%;
+  overflow: hidden;
 
   .main-left {
     position: absolute;
     left: 0px;
+    top: 0px;
+    bottom: 0px;
     width: 600px;
+    padding: 15px;
   }
 
   .main-right {
     position: absolute;
-    left: 600px;
+    padding: 15px;
+    left: 615px;
     right: 17px;
+    top: 0px;
+    bottom: 0px;
   }
 }
 
@@ -29,7 +41,7 @@ body {
   width: 20%;
   max-width: 250px;
   max-height: 250px;
-  margin: 0px 2% 0 0;
+  margin: 0px 2% 2% 0;
   padding-bottom: 20%;
   display:block;
   position: relative;
@@ -52,10 +64,15 @@ body {
   color: white;
 }
 
+.scrollable {
+  overflow-y: scroll;
+  height: 100%;
+}
+
 ul.order-items {
   list-style-type: none;
-  margin: 0 15px;
   padding: 0;
+  margin: 0;
 
   li {
     font-size: 25px;
@@ -74,13 +91,6 @@ ul.order-items {
       font-size: 35px;
       text-align: right;
     }
-  }
-
-  li.header {
-    border-radius: 10px 10px 0 0;
-    text-align: center;
-    color: $white;
-    background-color: #16A085;
   }
 }
 
@@ -169,6 +179,8 @@ ul.order-items {
 }
 
 .receipt {
+  position: relative;
+
   ul {
     margin: 0px;
 
@@ -198,4 +210,12 @@ ul.order-items {
   padding: 10px;
   font-size: 20px;
   text-align: left;
+}
+
+.full-screen {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
 }
