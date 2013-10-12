@@ -1,0 +1,54 @@
+// ------------------------------------------------------------
+//    Brand Colors
+// ------------------------------------------------------------
+
+$clementine: #f0812b;
+
+$wasabi: #9eae3d;
+$spice: #eb3f3c;
+$whale: #262626;
+$white: white;
+
+//background colors
+$gray-50: #909090;
+
+// ------------------------------------------------------------
+//    Typography: Color
+// ------------------------------------------------------------
+
+$link_color: #0088cc;
+$body_copy_dark: #333333;
+$body_copy_color: #555555;
+$body_copy_light: #888888;
+$body_copy_disabled: #aaaaaa;
+
+// For things like "choose up to 2" side label on grey header
+$copy_light_on_grey: #999999;
+
+// Form selected items get a faded nacho cheese color
+$active_form_row_color: rgba(232, 186, 35, 0.1);
+$unavailable_form_row_color: #aaaaaa;
+
+// ------------------------------------------------------------
+//    Typography: font-family, font-size & line-height
+// ------------------------------------------------------------
+
+$body_copy_size_large: 19px;
+$body_copy_size_bigger: 16px;
+$body_copy_size_reg: 14px;
+$body_copy_size_small: 13px;
+
+$body_copy_height_reg: 135%;
+$body_copy_height_small: 125%;
+$body_fonts_primary: Open Sans, Helvetica Neue, Arial, sans-serif;
+$body_fonts_secondary: Geogia, Serif;
+$body_fonts_mono: monospace, "Courier New";
+
+// ------------------------------------------------------------
+//    Misc. Sizes and Colors
+// ------------------------------------------------------------
+
+$side_buffer: 12px;
+$top_buffer: 12px;
+$body_bg_color: #eee;
+$list_border_color: #18191B;

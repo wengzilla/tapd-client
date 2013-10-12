@@ -1,0 +1,44 @@
+<div ng-controller="OrdersController">
+  <div class="main-wrapper">
+    <div class="main-left">
+      <ul class="order-items">
+        <li class="header palette-green-sea">
+          Order Items
+        </li>
+        <li ng-repeat="(id, info) in lineItems.order_items">
+          <span class="item-name">{{info.name}}</span>
+          <div class="item-info">
+            <i>{{info.quantity}}</i> x
+            <span class="item-price">
+              {{info.price | currency}}
+            </span>
+          </div>
+        </li>
+        <li ng-show="lineItems.taxes > 0">
+          <span class="item-name">Taxes</span>
+          <div class="item-info">
+            {{lineItems.taxes | currency}}
+          </div>
+        </li>
+        <li>
+          <div class="btn-checkout">
+            <div class="btn btn-block btn-lg btn-success" ng-click="sendOrder()">
+              <p>Charge</p>
+            </div>
+          </div>
+          <div class="order-total">
+            Total: {{lineItems.total | currency}}
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="main-right">
+      <div class="menu-item palette-midnight-blue" ng-repeat="item in items" ng-click="addItem(item)">
+        <div>
+          <p>{{item.name}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

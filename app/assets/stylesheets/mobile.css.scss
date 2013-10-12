@@ -1,0 +1,758 @@
+@import "bourbon";
+@import "mobile-global-vars";
+@import "typography";
+
+/* 
+==========================
+GLOBAL HEADER - global
+==========================
+*/
+
+.site-header {
+  background: $body_bg_color;
+  position:relative;
+  padding: 15px 0px;
+}
+
+.site-header .logo {
+  margin: 0;
+  height: 58px;
+}
+
+.site-header .brand {
+  padding-top: 5px;
+  display: block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 900;
+  font-size: 40px;
+  letter-spacing: -2px;
+  color: #34495e;
+}
+
+/* Menu Button - Can trim specificity when old button is removed 
+    
+   Also remove selectors on lines 32, 38, 46, and 51 when this is added 
+    
+*/
+.site-header .header-nav {
+  position:absolute;
+  right: 0;
+  top: 0;
+  list-style-type: none;
+  border-left: 1px solid rgba(0,0,0,.5);
+  height:100%;
+}
+
+.site-header .header-nav ul {
+  margin: 0;
+}
+
+.site-header .header-nav .nav-item {
+  list-style: none;
+  line-height:58px;
+  margin:0;
+  padding:0;
+  display: inline-block;
+}
+
+.site-header .header-nav .nav-item a {
+  display:block;
+  width: auto;     /* Overriding - delete when .header-nav is implemented */
+  height:auto;     /* Overriding - delete when .header-nav is implemented */
+  text-indent: 0;  /* Overriding - delete when .header-nav is implemented */
+  color: $white;
+  padding: 0 20px;
+  position: relative;
+}
+
+.site-header .header-nav .nav-menu a {
+  padding-left: 30px;
+  font-weight: bold;
+}
+
+.site-header .header-nav .nav-menu a:before {
+  content: "";
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid $white;
+  display:block;
+  position:absolute; 
+  left: 12px;
+  top: 50%;
+  margin-top: -2.5px;
+} 
+
+.site-header + .header_bar.h_progress {
+  border-top:1px solid rgba(0,0,0,.4)
+}
+
+/* 
+==========================
+PRIMARY NAVIGATION - global
+==========================
+*/
+
+nav.primary {
+  @include background-size(100px 100px);
+  border-top: 1px solid black;
+}
+
+nav.primary h1 {
+  font-size: 11px;
+  height: 28px;
+  padding: 1px 10px 0;
+  line-height: 28px;
+  border-top: 1px solid #555;
+  color: #999;
+  background: #333;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+nav.primary h2 {
+  font-size: 17px;
+  height: 41px;
+  padding: 1px 0 0;
+  line-height: 42px;
+  border-bottom: 1px solid #333;
+  color: #ccc;
+  background: #262626 url(" ") 10px center no-repeat;
+  margin: 0;
+  @include background-size(24px 24px);
+}
+
+nav.primary h2:first-child {
+  border-top: 1px solid #333;
+}
+
+nav.primary h2 a {
+  display: block;
+  color: #ccc;
+  padding-left: 46px;
+  text-decoration: none;
+}
+
+nav.primary .menus {
+  border-bottom: none;
+}
+
+
+
+
+
+/* 
+==========================
+FLASH MESSAGES - global
+==========================
+*/
+
+.flash {
+  padding: 16px 12px;
+}
+
+.flash p {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.notice {
+  background-color: rgb(253, 248, 233);
+  color: rba(102, 102, 102);
+}
+
+.flash.error,
+.errorExplanation h2 {
+  background-color: #c00;
+  color: #fff;
+}
+
+// refactor?
+.errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+}
+
+/* 
+==========================
+Page Headings
+==========================
+*/
+.page-head .top-head {
+  margin:0;
+}
+
+.page-head .subhead {
+  color: $whale;
+  margin:0;
+  font-size: $body_copy_size_large;
+  line-height: 1.2;
+}
+
+.page-head .description {
+  font-size: $body_copy_size_bigger;
+  margin-top:.25em;
+}
+
+.page-head .selected-option {
+  margin:0;
+}
+
+.page-head .note {
+  color: $gray-50;
+  font-size: 12px;
+  margin:0;
+}
+
+/*Error pages*/
+.error-page-title {
+  color: $spice;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+
+/* 
+==========================
+MOBILE LIST STYLING - global
+==========================
+*/
+
+//  Default, with side buffer space (add class "rows")
+ul.rows {
+  margin: 0 $side_buffer;
+  padding: 0;
+}
+
+.buffer ul.rows {
+  margin: 0;
+}
+
+ul.rows > li {
+  margin: 0;
+  list-style: none;
+  border-top: 1px solid $list_border_color;
+  @include clearfix;
+  font-weight: bold;
+}
+
+ul.rows > li:first-child {
+  border-top: none;
+}
+
+ul.rows > li .row {
+  padding: $top_buffer 0;
+  display: block;
+  position: relative;
+}
+
+//  Full Width (also add class "rows_wide")
+ul.rows.rows_wide {
+  margin: 0;
+}
+
+ul.rows.rows_wide > li .row {
+  padding: $top_buffer $side_buffer;
+}
+
+.buffer ul.rows.rows_wide {
+  margin-left: -$side_buffer;
+  margin-right: -$side_buffer;
+}
+
+//  Inset List (also add class ("rows_inset")
+ul.rows.rows_inset {
+  border: 1px solid $list_border_color;
+  margin: 1em $side_buffer;
+  @include border-radius(4px);
+  background: #f6f6f6;
+}
+
+ul.rows.rows_inset > li .row {
+  padding: $top_buffer $side_buffer;
+}
+
+.buffer ul.rows.rows_inset {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+//  ...row with a right ARROW
+ul.rows > li.arrow {
+  background-image: image-url("menus/arrow_alt.png");
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+
+ul.rows > li.arrow .row {
+  padding-right: 40px;
+}
+
+ul.rows.rows_wide > li.arrow {
+  background-image: image-url("menus/arrow.png");
+}
+
+ul.rows.rows_inset > li.arrow {
+  background-image: image-url("menus/arrow.png");
+}
+
+//  ...misc row text modifiers
+ul.rows > li .row_small {
+  font-size: 13px;
+  line-height: 16px;
+}
+
+ul.rows > li .row_sub {
+  font-weight: normal;
+}
+
+ul.rows > li .row_delink {
+  color: $body_copy_color;
+}
+
+//  ...with with RIGHT content (text/link, counter, price)
+//  --------------------------------------------------------------------------------------------------
+// Universal
+h2.row.with_right, ul.rows > li.with_right .row {
+  padding-right: 60px;
+}
+
+ul.rows > li.with_right.arrow .row {
+  padding-right: 60px; // if 60px isn't enough to clear the with_right content, we need an additional class (to add as needed) that increases the padding.
+}
+
+h2.row.with_right .right, ul.rows > li.with_right .row .right {
+  float: right;
+  display: block;
+  margin: -7px 0 0 0;
+  position: absolute;
+  top: 50%;
+  right: $side_buffer;
+  font-weight: normal;
+}
+
+// For right content that should be top-aligned (instead of v.centered)
+ul.rows > li.with_right .row .right.right_top {
+  top: 20px;
+}
+
+// Specific per item added...
+ul.rows > li.with_right .row .right_counter {
+  background: $clementine;
+  color: #fff;
+  padding: 3px 6px 0;
+  line-height: 150%;
+  font-size: 75%;
+  text-align: center;
+  @include border-radius(3px);
+  margin: -9px 0 0 0;
+}
+
+ul.rows > li.with_right .row .right_counter.counter_off {
+  background: #aaa;
+}
+
+ul.rows > li.with_right .row .right_small {
+  line-height: 150%;
+  font-size: 75%;
+}
+
+ul.rows > li.with_right .row .right_price {
+  color: #aaa;
+}
+
+// If the row has an arrow, increase the right-offset for .with_right content a bit more (to make playlist for the arrow)
+ul.rows > li.with_right.arrow .row .right {
+  right: 19px;
+}
+
+ul.rows.rows_inset > li.with_right.arrow .row .right {
+  right: 31px;
+}
+
+ul.rows.rows_wide > li.with_right.arrow .row .right {
+  right: 31px;
+}
+
+//  ...with with LEFT content (icon, radio, checkbox)
+//  --------------------------------------------------------------------------------------------------
+
+// ICONS
+// -----------------------------------------------------
+
+// Image-based Icons
+ul.rows > li.with_left .row_icon_img {
+  padding-left: 42px;
+  background-position: $side_buffer center;
+  background-repeat: no-repeat;
+}
+
+// Type-based Icons
+ul.rows > li.with_left .row_icon_type {
+  padding-left: 42px;
+}
+
+ul.rows > li.with_left .row_icon_type span {
+  background: red;
+  position: absolute;
+  left: $side_buffer;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+}
+
+// Generic Placeholder Icon (follow this syntax example; size the icon accordingly if it is retina, etc)
+ul.rows > li.with_left .row_icon_img.icon_placeholder {
+  background-image: image-url("sandbox/icon_placeholder.gif");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+}
+
+// FORM ITEMS (Radios, Checkboxes)
+// -----------------------------------------------------
+
+ul.rows > li.with_left.left_clearance label.row input[type='radio'],
+ul.rows > li.with_left.left_clearance label.row input[type='checkbox'] {
+  position: absolute;
+  left: $side_buffer;
+  top: 15px;
+}
+
+ul.rows > li.with_left.left_clearance .row {
+  padding-left: 30px;
+}
+
+//  POTS TO DO -- document this better, delete if unused
+//  Borders and Misc Stuff
+ul.rows > li.no_border {
+  border: none;
+}
+
+ul.rows.border_top {
+  border-top: 1px solid $list_border_color;
+}
+
+ul.rows.with_border {
+  border-bottom: 1px solid $list_border_color;
+}
+
+ul.rows.with_border > li:first-child {
+  border-top: 1px solid $list_border_color;
+}
+
+//  (POTS TO DO -- document this better)
+//  Row Text Styling Variations
+
+ul.rows > li .row .primary {
+  display: block;
+  padding-right: 60px;
+  color: $body_copy_dark;
+}
+
+// For "disabled" rows, usually used in radio button forms where an option is unavailable
+ul.rows > li .row.row_disabled, ul.rows > li .row.row_disabled .sub > li {
+  color: $body_copy_disabled;
+}
+
+ul.rows > li .row .link {
+  color: $link_color;
+}
+
+ul.rows > li .row .primary.delink {
+  color: $body_copy_color;
+}
+
+ul.rows > li .row .sub {
+  margin: 0;
+  padding: 0;
+}
+
+ul.rows > li .row .sub > li {
+  margin: 0;
+  padding: 0;
+  display: block;
+  color: $body_copy_light;
+  font-weight: normal;
+  font-size: $body_copy_size_small;
+  line-height: $body_copy_height_small;
+}
+
+ul.rows > li .row .sub > li:first-child {
+  margin: 3px 0 0 0;
+}
+
+ul.rows > li .row .sub > li.price {
+  position: absolute;
+  top: 12px;
+  right: 0;
+  color: $body_copy_color;
+  padding: 0;
+  font-weight: bold;
+}
+
+ul.rows.rows_wide > li .row .sub > li.price {
+  right: $side_buffer;
+}
+
+ul.rows > li .row .sub > li.link {
+  color: $link_color;
+  margin: 3px 0 0 0;
+  font-weight: bold;
+}
+
+// Grouped Items
+// -----------------------------------------------------
+ul.rows > li .grouped-info {
+  font-weight:normal;
+}
+ul.rows > li .grouped-info h4 {
+  font-size: $body_copy_size_bigger;
+}
+ul.rows > li .grouped-info h4, 
+ul.rows > li .grouped-info p {
+  margin: 0;
+}
+
+ul.rows > li .grouped-info h4, 
+ul.rows > li .grouped-info p strong{
+  color: $whale;
+}
+
+
+
+// ------------------
+//  GLOBAL: Buttons
+// ------------------
+
+
+
+// ------------------
+//  GLOBAL: FORM ELEMENTS
+// ------------------
+
+//  BASIC FORM ELEMENTS
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+textarea {
+  padding: 12px 8px;
+  margin: 0;
+  border: none;
+  background: #fff;
+  border: 1px solid #ccc;
+  font-weight: bold;
+  color: $whale;
+  font-size: 16px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"] {
+  display: block;
+  width: 100%;
+  @include box-sizing(border-box);
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+// select {
+//   position: relative;
+//   padding: 7px 28px 8px 10px;
+//   color: #333;
+//   background-image: image-url("select-arrow.png"), -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(50%, #f9f9f8), color-stop(51%, #f2f2f1), color-stop(100%, #e5e5e1));
+//   background-repeat: no-repeat;
+//   background-position: 100% 50%,100%;
+//   background-size: 18px 16px,100%;
+//   border-color: #e6e6e6 #c2c2c2 #c2c2c2 #e6e6e6;
+//   -webkit-appearance: none;
+//   outline: 0;
+//   border-radius: 3px;
+//   text-shadow: 0 1px 0 #fff;
+//   font-family: "Helvetica","Arial",sans-serif;
+//   font-size: 13px;
+//   line-height: 17px;
+// }
+
+form.form fieldset {
+  padding: 10px 0;
+  border: none;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  -webkit-padding-before: 0;
+  -webkit-padding-start: 0;
+  -webkit-padding-end: 0;
+  -webkit-padding-after:0;
+}
+
+form.form ul {
+  list-style: none;
+  margin: 0;
+  padding: 0; /*Jared Removed Float ya'll*/
+}
+
+form.form ul li {
+  margin: 0 6px 10px 0;
+  padding: 0;
+  float: left;
+  list-style: none;
+  display: inline-block;
+  width: 100%;
+  @include box-sizing(border-box);
+}
+
+form.form ul li label {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+form.form ul li input[type="text"],
+form.form ul li input[type="email"],
+form.form ul li input[type="number"],
+form.form ul li input[type="password"] {
+  margin: 0;
+  border: 1px solid #cccccc;
+}
+
+form.form ul li.half {
+  width: 48%;
+}
+
+form.form ul li.one-third {
+  width: 32.3%;
+}
+
+form.form ul li.two-thirds {
+  width: 64.5%;
+}
+
+form.form ul li.one-fifth {
+  width: 23%;
+}
+
+form.form ul li.two-fifths {
+  width: 36.5%;
+}
+
+form.form ul li.three-fifths {
+  width: 49.7%;
+}
+
+form.form ul li.four-fifths {
+  width: 77.5%;
+}
+
+form.form ul li.last {
+  margin-right: 0;
+}
+
+form.form h3.form-title {
+  margin: 1em 0 0;
+}
+
+
+/* Expand select button appearance to block element */
+.expand-appearance-select {
+  display:block; 
+  position: relative;
+  padding: 12px 28px 13px 10px;
+  color: #333;
+  background-image: image-url("select-arrow.png"), -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(50%, #f9f9f8), color-stop(51%, #f2f2f1), color-stop(100%, #e5e5e1));
+  background-repeat: no-repeat;
+  background-position: 100% 50%,100%;
+  background-size: 18px 16px,100%;
+  border-width:1px;
+  border-style: solid;
+  border-color: #e6e6e6 #c2c2c2 #c2c2c2 #e6e6e6;
+  -webkit-appearance: none;
+  outline: 0;
+  border-radius: 3px;
+  text-shadow: 0 1px 0 #fff;
+  font-family: "Helvetica","Arial",sans-serif;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.expand-appearance-select span {
+  display:block;
+  font-size: 12px;
+  color: $gray-50;
+  text-align:right;
+}
+
+.expand-appearance-select select {
+  background: none;
+  border: none;
+  position:absolute;  
+  right:20px;
+  top:10px;
+  font-weight:bold;
+  font-size: 16px;
+  -webkit-appearance: none;
+  text-align:right;
+}
+
+form.form .form-errors {
+  line-height: 1.1;
+  margin: 10px 10px -10px;
+  padding: 8px 11px;
+  background: lighten($spice, 36%);
+  color: $whale;
+  border-radius: 3px;
+
+  h2 {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  ul {
+    float: none;
+    margin: 0;
+    padding: 0 0 0 1em;
+    list-style: disc;
+    list-style-type: disc;
+  }
+
+  li {
+    float: none;
+    margin: 0;
+    padding: 0.4em 0;
+    display: list-item;
+    list-style: disc;
+    list-style-type: disc;
+  }
+}
+
+form.form .form-error {
+  label {
+    color: $spice;
+  }
+  input {
+    border-color: $spice;
+  }
+}
+
+form.choose-card-form {
+  li.with_left,
+  label.row {
+    margin: 0;
+  }
+}

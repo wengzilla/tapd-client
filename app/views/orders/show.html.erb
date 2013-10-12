@@ -1,0 +1,41 @@
+<div class="order-details palette-belize-hole">
+  <div class="user-info">
+    <img src="{{currentOrder.user.image_url}}"></img>
+    <div class="personal">
+      <h1>{{currentOrder.user.name}}</h1>
+      <span>{{currentOrder.user.email}}</span>
+    </div>
+  </div>
+  <div class="btn-notify">
+    <div class="btn btn-block btn-lg btn-danger" ng-click="sendOrder()">
+      <p>Notify!</p>
+    </div>
+  </div>
+</div>
+<div class="receipt">
+  <div class="subheader palette-midnight-blue">Items</div>
+  <ul class="order-items">
+    <li ng-repeat="(id, info) in currentOrder.order_items">
+      <span class="item-name">{{info.name}}</span>
+      <div class="item-info">
+        <i>{{info.quantity}}</i> x
+        <span class="item-price">
+          {{info.price | currency}}
+        </span>
+      </div>
+    </li>
+    <li ng-show="currentOrder.taxes > 0">
+      <span class="item-name">Taxes</span>
+      <div class="item-info">
+        {{currentOrder.taxes | currency}}
+      </div>
+    </li>
+    <li>
+      <span class="item-name">Total</span>
+      <div class="item-info">
+        {{currentOrder.total | currency}}
+      </div>
+    </li>
+  </ul>
+</div>
+
