@@ -1,12 +1,12 @@
 <div class="controller" ng-controller="OrderQueueController">
   <div class="main-wrapper">
     <div class="main-left">
-      <div class="header palette-green-sea">
-          Order Queue
+      <div class="header palette-green-sea" ng-click="toggleState(currentStateIndex)">
+          Order {{currentStateIndex == 0 ? "Queue" : "History"}}
       </div>
       <div class="scrollable">
         <ul class="order-items">
-          <li ng-repeat="order in orders" style="overflow:auto;" ng-click="displayOrder(order)">
+          <li ng-repeat="order in orders" style="overflow:auto;" ng-click="displayOrder(order)" ng-class="order.state">
             <span class="item-name">{{order.user.first_name}} {{order.user.last_name}}</span>
             <div class="item-info">
                 Order #{{order.id}}

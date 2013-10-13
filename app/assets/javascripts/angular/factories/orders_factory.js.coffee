@@ -25,13 +25,31 @@ App.factory("ordersFactory", ['$http', ($http) ->
     )
     promise
 
+  factory.createOrder = (params) ->
+    # $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+    $.ajax({
+      type: 'POST',
+      url: 'http://tapdservice.herokuapp.com/orders.json',
+      data: params,
+    }).success((response) ->
+      console.log response
+    )
+
+  factory.updateOrder = (id, params) ->
+    $.ajax({
+      type: 'POST',
+      url: 'http://tapdservice.herokuapp.com/orders/' + id,
+      data: _.extend(params, {_method: 'PUT'}),
+    }).success((response) ->
+      console.log response
+    )
+
   factory.notifyOrderReady = (id) ->
-    console.log "here"
     promise = $http({
       method: 'GET',
       url: "http://tapdservice.herokuapp.com/orders/#{id}/send_notification"
     }).success((response) ->
-      console.log "Notified: #{response.status}"
+      # console.log "Notified: #{response.response}"
     )
     promise
 

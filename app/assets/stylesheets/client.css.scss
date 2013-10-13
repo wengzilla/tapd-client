@@ -81,6 +81,14 @@ ul.order-items {
     border-bottom: 1px solid #aaa;
   }
 
+  li.created {
+    background: blue;
+  }
+
+  li.paid {
+    background: green;
+  }
+
   li:last-child {
     border-bottom: 0px;
     border-radius: 0 0 10px 10px;

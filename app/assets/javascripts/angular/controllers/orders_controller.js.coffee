@@ -1,4 +1,4 @@
-App.controller("OrdersController", ['$scope', '$location', '$filter', 'itemsFactory', ($scope, $location, $filter, itemsFactory) ->
+App.controller("OrdersController", ['$scope', '$location', '$filter', 'itemsFactory', 'ordersFactory', ($scope, $location, $filter, itemsFactory, ordersFactory) ->
   $scope.items = [{id: 1, name: "Burger", price: 10.00},{id: 2, name: "Soft Drink", price: 2.50},{id: 3, name: "Fries", price: 3.50}]
   $scope.tax_rate = 0.10
   $scope.orderItems = []
@@ -10,7 +10,6 @@ App.controller("OrdersController", ['$scope', '$location', '$filter', 'itemsFact
   , true
 
   init = () ->
-    console.log "test"
     $scope.getItems()
 
   $scope.getItems = ->
@@ -20,8 +19,13 @@ App.controller("OrdersController", ['$scope', '$location', '$filter', 'itemsFact
     $scope.orderItems.push(item)
 
   $scope.sendOrder = ->
-    console.log(angular.toJson($scope.lineItems))
+    # console.log(angular.toJson({ "order_item_attributes": _.values(_calculateOrder()) } }))
+    ordersFactory.createOrder("order": angular.toJson({ "order_items_attributes": _orderJson(), "business_id": 1 }))
     console.log("Sending...")
+
+  _orderJson = ->
+    items = _.uniq($scope.orderItems)
+    _.map(items, (item) -> { item_id: item.id, quantity: _getQuantity(item.id) })
 
   recalculateOrder = ->
     $scope.lineItems = {

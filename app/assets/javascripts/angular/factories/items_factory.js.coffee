@@ -8,9 +8,9 @@ App.factory("itemsFactory", ['$http', ($http) ->
   factory.getItems = () ->
     promise = $http({
       method: 'GET',
-      url: 'http://tapdservice.herokuapp.com/items'
+      url: 'http://tapdservice.herokuapp.com/items',
+      cache: true
     }).success((response) ->
-      console.log response.items
       angular.copy(response.items, items)
     )
     promise
