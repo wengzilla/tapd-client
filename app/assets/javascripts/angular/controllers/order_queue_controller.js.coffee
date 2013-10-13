@@ -17,15 +17,37 @@ App.controller("OrderQueueController", ['$scope', '$location', '$filter', '$time
 
   $scope.getOrders = (state, initialize=false, recurse=true) ->
     ordersFactory.getOrders({state: state}).then ->
-      $scope.displayOrder(_.first($scope.orders)) if initialize
+      $scope.displayOrder(_.first($scope.orders)) if initialize || !_.find($scope.orders, (order) ->
+        $scope.currentOrder.id == order.id)
 
     if recurse
+      _currentState()
       $timeout(->
         $scope.getOrders(_currentState())
-      , 5000)
+      , 1000)
 
-  $scope.notifyUser = (order) ->
-    ordersFactory.updateOrder(order.id, { state_event: "notify" })
+  $scope.nextState = (order) ->
+    if order
+      if order.state == "created"
+        {
+          label: "Mark as Paid",
+          update: () ->
+            ordersFactory.updateOrder(order.id, { state_event: "submit" })
+            order.state = "paid"
+        }
+      else if order.state == "paid"
+        {
+          label: "Notify!",
+          update: () ->
+            ordersFactory.updateOrder(order.id, { state_event: "notify" })
+            order.state = "notified"
+        }
+      else
+        {
+          label: "Notify again",
+          update: () ->
+            ordersFactory.updateOrder(order.id, { state_event: "notify" })
+        }
 
   $scope.toggleState = (state) ->
     $scope.currentStateIndex = ($scope.currentStateIndex + 1) % 2

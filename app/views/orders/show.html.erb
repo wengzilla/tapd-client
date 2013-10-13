@@ -7,8 +7,8 @@
     </div>
   </div>
   <div class="btn-notify">
-    <div class="btn btn-block btn-lg btn-danger" ng-click="notifyUser(currentOrder)">
-      <p>Notify!</p>
+    <div class="btn btn-block btn-lg btn-danger" ng-click="nextState(currentOrder).update()" ng-show="currentOrder">
+      <p>{{nextState(currentOrder).label}}</p>
     </div>
   </div>
 </div>
