@@ -2,8 +2,9 @@
   <div class="user-info">
     <img ng-src="{{currentOrder && currentOrder.user.image_url || 'https://lh4.googleusercontent.com/-IeNLrMufTzs/AAAAAAAAAAI/AAAAAAAAAAA/DhrKtAT5unM/s120-c/photo.jpg'}}"></img>
     <div class="personal">
-      <h1>{{currentOrder.user.first_name || "Loyal"}} {{currentOrder.user.last_name || "Customer"}}</h1>
+      <h1>{{currentOrder.user.first_name || "Customer"}} {{currentOrder.user.last_name}}</h1>
       <span>{{currentOrder.user.email}}</span>
+      <span class="fui-heart favorite" ng-show="currentOrder.user && currentOrder.user.rank < 10"> <span style="font-size: 20px; color: white; font-weight:bold;">top customer</span></span>
     </div>
   </div>
   <div class="btn-notify">

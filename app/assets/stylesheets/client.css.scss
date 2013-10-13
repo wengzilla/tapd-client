@@ -141,6 +141,7 @@ ul.order-items {
   text-align: center;
   overflow:auto;
   padding: 20px 0;
+  position: relative;
 
   .btn-notify {
     width: 475px;
@@ -224,4 +225,13 @@ ul.order-items {
   top: 0;
   right: 0;
   bottom: 0;
+}
+
+.favorite {
+  color: #e74c3c !important;
+  font-size: 30px !important;
+  display: block;
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
