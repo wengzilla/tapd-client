@@ -81,12 +81,9 @@ ul.order-items {
     border-bottom: 1px solid #aaa;
   }
 
-  li.created {
-    background: blue;
-  }
-
-  li.paid {
-    background: green;
+  li.paid, li.notified {
+    background: rgba(39,174,96,0.7);
+    color: $white;
   }
 
   li:last-child {
@@ -170,6 +167,7 @@ ul.order-items {
   }
 
   img {
+    max-width: 125px;
     border-radius: 65px;
     float: left;
     margin: 20px;
