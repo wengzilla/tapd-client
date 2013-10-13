@@ -1,8 +1,8 @@
 <div class="order-details palette-belize-hole">
   <div class="user-info">
-    <img src="{{currentOrder.user.image_url}}"></img>
+    <img ng-src="{{currentOrder && currentOrder.user.image_url || 'https://lh4.googleusercontent.com/-IeNLrMufTzs/AAAAAAAAAAI/AAAAAAAAAAA/DhrKtAT5unM/s120-c/photo.jpg'}}"></img>
     <div class="personal">
-      <h1>{{currentOrder.user.first_name}} {{currentOrder.user.last_name}}</h1>
+      <h1>{{currentOrder.user.first_name || "Loyal"}} {{currentOrder.user.last_name || "Customer"}}</h1>
       <span>{{currentOrder.user.email}}</span>
     </div>
   </div>

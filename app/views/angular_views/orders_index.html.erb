@@ -16,9 +16,9 @@
       </div>
     </div>
 
-    <div class="main-right">
+    <div class="main-right" ng-show="currentOrder.id">
       <div class="header palette-midnight-blue">
-        Order Details
+        Order Details for #{{currentOrder.id}}
       </div>
       <div ng-show="currentOrder" ng-include = "'orders/{{currentOrder.id}}'">
       </div>

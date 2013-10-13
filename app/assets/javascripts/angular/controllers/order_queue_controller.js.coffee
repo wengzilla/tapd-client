@@ -1,11 +1,11 @@
 App.controller("OrderQueueController", ['$scope', '$location', '$filter', '$timeout', 'ordersFactory', ($scope, $location, $filter, $timeout, ordersFactory) ->
   $scope.orders = ordersFactory.orders()
-  $scope.$watch 'orders', (n, o) ->
-    console.log("TRUE")
-  , true
   $scope.states = ["created,paid", "notified"]
   $scope.currentStateIndex = 0
   $scope.currentOrder = {}
+
+  $scope.$on '$destroy', () -> 
+    $timeout.cancel($scope.timeoutPromise) if $scope.timeoutPromise
 
   init = () ->
     $scope.getOrders(_currentState(), true)
@@ -16,20 +16,20 @@ App.controller("OrderQueueController", ['$scope', '$location', '$filter', '$time
   $scope.displayOrder = (order) ->
     $scope.currentOrder = order
 
-  $scope.getOrders = (state, initialize=false, recurse=true) ->
+  $scope.getOrders = (state, initialize=false, cancel=false) ->
     ordersFactory.getOrders({state: state}).then ->
       $scope.displayOrder(_.first($scope.orders)) if initialize || !_findOrder() || _findOrder().state != $scope.currentOrder.state
 
-    if recurse
-      _currentState()
-      $timeout(->
-        $scope.getOrders(_currentState())
-      , 1000)
+    $timeout.cancel($scope.timeoutPromise) if cancel && $scope.timeoutPromise
+    $scope.timeoutPromise = $timeout(->
+      $scope.getOrders(_currentState())
+    , 1000)
 
   _findOrder = ->
-    _.find($scope.orders, (order) -> 
-      $scope.currentOrder.id == order.id
-    )
+    if $scope.currentOrder
+      _.find($scope.orders, (order) -> 
+        $scope.currentOrder.id == order.id
+      )
 
   $scope.nextState = (order) ->
     if order
@@ -50,7 +50,7 @@ App.controller("OrderQueueController", ['$scope', '$location', '$filter', '$time
 
   $scope.toggleState = (state) ->
     $scope.currentStateIndex = ($scope.currentStateIndex + 1) % 2
-    $scope.getOrders(_currentState(), true, false)
+    $scope.getOrders(_currentState(), true, true)
 
   init()
 ])
