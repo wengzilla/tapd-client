@@ -21,6 +21,8 @@ App.controller("OrdersController", ['$scope', '$location', '$filter', 'itemsFact
   $scope.sendOrder = ->
     # console.log(angular.toJson({ "order_item_attributes": _.values(_calculateOrder()) } }))
     ordersFactory.createOrder("order": angular.toJson({ "order_items_attributes": _orderJson(), "business_id": 1 }))
+    $scope.order = {}
+    $scope.orderItems = []
     console.log("Sending...")
 
   _orderJson = ->

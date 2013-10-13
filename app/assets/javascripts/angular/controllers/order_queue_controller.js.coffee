@@ -15,6 +15,7 @@ App.controller("OrderQueueController", ['$scope', '$location', '$filter', '$time
 
   $scope.displayOrder = (order) ->
     $scope.currentOrder = order
+    console.log $scope.currentOrder.user
 
   $scope.getOrders = (state, initialize=false, cancel=false) ->
     ordersFactory.getOrders({state: state}).then ->
